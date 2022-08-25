@@ -59,12 +59,12 @@ namespace NZWalks.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Length")
                         .HasColumnType("float");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("RegionId")
                         .HasColumnType("uniqueidentifier");
@@ -93,7 +93,7 @@ namespace NZWalks.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WalkDifficulties");
+                    b.ToTable("WalkDifficulty");
                 });
 
             modelBuilder.Entity("NZWalks.API.Models.Domain.Walk", b =>

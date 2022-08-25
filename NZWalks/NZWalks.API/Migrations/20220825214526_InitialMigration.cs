@@ -27,7 +27,7 @@ namespace NZWalks.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "WalkDifficulties",
+                name: "WalkDifficulty",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -35,7 +35,7 @@ namespace NZWalks.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WalkDifficulties", x => x.Id);
+                    table.PrimaryKey("PK_WalkDifficulty", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,7 +43,7 @@ namespace NZWalks.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Length = table.Column<double>(type: "float", nullable: false),
                     RegionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     WalkDifficultyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
@@ -58,9 +58,9 @@ namespace NZWalks.API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Walks_WalkDifficulties_WalkDifficultyId",
+                        name: "FK_Walks_WalkDifficulty_WalkDifficultyId",
                         column: x => x.WalkDifficultyId,
-                        principalTable: "WalkDifficulties",
+                        principalTable: "WalkDifficulty",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -85,7 +85,7 @@ namespace NZWalks.API.Migrations
                 name: "Regions");
 
             migrationBuilder.DropTable(
-                name: "WalkDifficulties");
+                name: "WalkDifficulty");
         }
     }
 }

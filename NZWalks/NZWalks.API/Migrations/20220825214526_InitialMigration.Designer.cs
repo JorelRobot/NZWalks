@@ -12,7 +12,7 @@ using NZWalks.API.Data;
 namespace NZWalks.API.Migrations
 {
     [DbContext(typeof(NZWalksDbContext))]
-    [Migration("20220825213255_InitialMigration")]
+    [Migration("20220825214526_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,12 +61,12 @@ namespace NZWalks.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Length")
                         .HasColumnType("float");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("RegionId")
                         .HasColumnType("uniqueidentifier");
@@ -95,7 +95,7 @@ namespace NZWalks.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WalkDifficulties");
+                    b.ToTable("WalkDifficulty");
                 });
 
             modelBuilder.Entity("NZWalks.API.Models.Domain.Walk", b =>
