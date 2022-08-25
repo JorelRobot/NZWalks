@@ -8,7 +8,7 @@
         public double Area { get; set; }
         public double Lat { get; set; }
         public double Long { get; set; }
-        public double Populatio { get; set; }
+        public double Population { get; set; }
 
 
         // Navigation Property

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NZWalks.API.Migrations
 {
-    public partial class InitalMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,7 +19,7 @@ namespace NZWalks.API.Migrations
                     Area = table.Column<double>(type: "float", nullable: false),
                     Lat = table.Column<double>(type: "float", nullable: false),
                     Long = table.Column<double>(type: "float", nullable: false),
-                    Populatio = table.Column<double>(type: "float", nullable: false)
+                    Population = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

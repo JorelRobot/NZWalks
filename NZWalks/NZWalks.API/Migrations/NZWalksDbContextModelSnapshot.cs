@@ -45,7 +45,7 @@ namespace NZWalks.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Populatio")
+                    b.Property<double>("Population")
                         .HasColumnType("float");
 
                     b.HasKey("Id");

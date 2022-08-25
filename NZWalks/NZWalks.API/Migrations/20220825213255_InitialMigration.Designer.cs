@@ -12,8 +12,8 @@ using NZWalks.API.Data;
 namespace NZWalks.API.Migrations
 {
     [DbContext(typeof(NZWalksDbContext))]
-    [Migration("20220825211955_InitalMigration")]
-    partial class InitalMigration
+    [Migration("20220825213255_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,7 +47,7 @@ namespace NZWalks.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Populatio")
+                    b.Property<double>("Population")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
