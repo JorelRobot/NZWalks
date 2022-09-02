@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using NZWalks.API.Models.Domain;
 using NZWalks.API.Repositories;
 
 namespace NZWalks.API.Controllers
@@ -29,6 +30,7 @@ namespace NZWalks.API.Controllers
 
         [HttpGet]
         [Route("{id:guid}")]
+        [ActionName("GetWalkDifficultyById")]
         public async Task<IActionResult> GetWalkDifficultyById(Guid id)
         {
             var walkDifficulty = await walkDifficultyRepository.GetAsync(id);
@@ -38,6 +40,20 @@ namespace NZWalks.API.Controllers
             var walkDifficultyDTO = mapper.Map<Models.DTO.WalkDifficulty>(walkDifficulty);
 
             return Ok(walkDifficultyDTO);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddWalkDifficulty([FromBody] Models.DTO.AddWalkdifficultyRequest addWalkdifficultyRequest)
+        {
+            var walkDifficultyDomain = new Models.Domain.WalkDifficulty() {
+                Code = addWalkdifficultyRequest.Code,
+            };
+
+            walkDifficultyDomain = await walkDifficultyRepository.AddAsync(walkDifficultyDomain);
+
+            var walkDifficultiyDTO = mapper.Map<Models.DTO.WalkDifficulty>(walkDifficultyDomain);
+
+            return CreatedAtAction(nameof(GetWalkDifficultyById), new { id = walkDifficultiyDTO.Id }, walkDifficultiyDTO);
         }
     }
 }
