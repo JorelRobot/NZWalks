@@ -33,7 +33,7 @@ namespace NZWalks.API.Repositories
 
         public Task<WalkDifficulty> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return nZWalksDbContext.WalkDifficulty.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public Task<WalkDifficulty> UpdateAsycn(Guid id, WalkDifficulty walkDifficulty)
