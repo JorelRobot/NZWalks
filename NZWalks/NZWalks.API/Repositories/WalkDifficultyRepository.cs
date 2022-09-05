@@ -38,9 +38,17 @@ namespace NZWalks.API.Repositories
             return nZWalksDbContext.WalkDifficulty.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<WalkDifficulty> UpdateAsycn(Guid id, WalkDifficulty walkDifficulty)
+        public async Task<WalkDifficulty> UpdateAsycn(Guid id, WalkDifficulty walkDifficulty)
         {
-            throw new NotImplementedException();
+            var existingWalkdifficulty = await nZWalksDbContext.WalkDifficulty.FindAsync(id);
+
+            if (existingWalkdifficulty == null) return null;
+
+            existingWalkdifficulty.Code = walkDifficulty.Code;
+
+            await nZWalksDbContext.SaveChangesAsync();
+
+            return existingWalkdifficulty;
         }
     }
 }
