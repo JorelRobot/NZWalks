@@ -57,6 +57,7 @@ namespace NZWalks.API.Controllers
         }
 
         [HttpPut]
+        [Route("{id:guid}")]
         public async Task<IActionResult> UpdateWalkDifficultyAsync(Guid id, Models.DTO.UpdateWalkDifficultyRequest updateWalkDifficulty)
         {
             var walkDificultyDomain = new Models.Domain.WalkDifficulty()
@@ -69,6 +70,19 @@ namespace NZWalks.API.Controllers
             if (walkDificultyDomain == null) return NotFound();
 
             var walkDifficultyDTO = mapper.Map<Models.DTO.WalkDifficulty>(walkDificultyDomain);
+
+            return Ok(walkDifficultyDTO);
+        }
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> DeleteWalkDifficultyAsync(Guid id)
+        {
+            var walkDifficultyDomain = await walkDifficultyRepository.DeleteAsync(id);
+
+            if (walkDifficultyDomain == null) return NotFound();
+
+            var walkDifficultyDTO = mapper.Map<Models.DTO.WalkDifficulty>(walkDifficultyDomain);
 
             return Ok(walkDifficultyDTO);
         }
