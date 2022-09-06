@@ -196,11 +196,6 @@ namespace NZWalks.API.Controllers
                     $"{nameof(addRegionRequest.Name)} cannot be null or empty or white space.");
             }
 
-            if (addRegionRequest.Area <= 0)
-            {
-                ModelState.AddModelError(nameof(addRegionRequest.Area),
-                    $"{nameof(addRegionRequest.Area)} cannot be null or empty or white space.");
-            }
 
             if (addRegionRequest.Area <= 0)
             {
@@ -208,17 +203,6 @@ namespace NZWalks.API.Controllers
                     $"{nameof(addRegionRequest.Area)} cannot be less than or equeal to zero.");
             }
 
-            if (addRegionRequest.Lat <= 0)
-            {
-                ModelState.AddModelError(nameof(addRegionRequest.Area),
-                    $"{nameof(addRegionRequest.Lat)} cannot be less than or equeal to zero.");
-            }
-
-            if (addRegionRequest.Long <= 0)
-            {
-                ModelState.AddModelError(nameof(addRegionRequest.Long),
-                    $"{nameof(addRegionRequest.Long)} cannot be less than or equeal to zero.");
-            }
 
             if (addRegionRequest.Population < 0)
             {
@@ -256,25 +240,7 @@ namespace NZWalks.API.Controllers
             if (updateRegionRequest.Area <= 0)
             {
                 ModelState.AddModelError(nameof(updateRegionRequest.Area),
-                    $"{nameof(updateRegionRequest.Area)} cannot be null or empty or white space.");
-            }
-
-            if (updateRegionRequest.Area <= 0)
-            {
-                ModelState.AddModelError(nameof(updateRegionRequest.Area),
                     $"{nameof(updateRegionRequest.Area)} cannot be less than or equeal to zero.");
-            }
-
-            if (updateRegionRequest.Lat <= 0)
-            {
-                ModelState.AddModelError(nameof(updateRegionRequest.Area),
-                    $"{nameof(updateRegionRequest.Lat)} cannot be less than or equeal to zero.");
-            }
-
-            if (updateRegionRequest.Long <= 0)
-            {
-                ModelState.AddModelError(nameof(updateRegionRequest.Long),
-                    $"{nameof(updateRegionRequest.Long)} cannot be less than or equeal to zero.");
             }
 
             if (updateRegionRequest.Population < 0)
