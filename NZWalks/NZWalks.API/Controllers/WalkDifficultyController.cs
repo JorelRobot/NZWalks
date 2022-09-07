@@ -43,10 +43,10 @@ namespace NZWalks.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddWalkDifficulty([FromBody] Models.DTO.AddWalkdifficultyRequest addWalkdifficultyRequest)
+        public async Task<IActionResult> AddWalkDifficulty([FromBody] Models.DTO.AddWalkDifficultyRequest addWalkdifficultyRequest)
         {
             // Validate incoming data
-            if (!ValidateAddWalkDifficulty(addWalkdifficultyRequest)) return BadRequest(ModelState);
+            // if (!ValidateAddWalkDifficulty(addWalkdifficultyRequest)) return BadRequest(ModelState);
 
             var walkDifficultyDomain = new Models.Domain.WalkDifficulty() {
                 Code = addWalkdifficultyRequest.Code,
@@ -65,7 +65,7 @@ namespace NZWalks.API.Controllers
         {
 
             // Validate incoming data
-            if (!ValidateUpdateWalkDifficulty(updateWalkDifficulty)) return BadRequest(ModelState);
+            // if (!ValidateUpdateWalkDifficulty(updateWalkDifficulty)) return BadRequest(ModelState);
 
             var walkDificultyDomain = new Models.Domain.WalkDifficulty()
             {
@@ -96,7 +96,7 @@ namespace NZWalks.API.Controllers
 
         #region Private Methods
 
-        private bool ValidateAddWalkDifficulty(Models.DTO.AddWalkdifficultyRequest addWalkdifficultyRequest)
+        private bool ValidateAddWalkDifficulty(Models.DTO.AddWalkDifficultyRequest addWalkdifficultyRequest)
         {
             if (addWalkdifficultyRequest == null)
             {

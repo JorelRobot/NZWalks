@@ -53,7 +53,7 @@ namespace NZWalks.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddWalkAsync([FromBody] Models.DTO.AddWalkRequest addWalkRequest)
         {
-            // Validate the incoming request
+            // Validate the incoming request (Just for bussines validation)
             if (!(await ValidateAddWalkAsync(addWalkRequest))) return BadRequest(ModelState);
 
             // Convert DTO to Domain Object
@@ -87,7 +87,7 @@ namespace NZWalks.API.Controllers
         public async Task<IActionResult> UpdateWalkAsync([FromRoute] Guid id,
             [FromBody] UpdateWalkRequest updateWalkRequest)
         {
-            // Validate the incoming data
+            // Validate the incoming data (Just for bussines validation)
             if (!(await ValidateUpdateWalkAsync(updateWalkRequest))) return BadRequest(ModelState);
 
             // Convert DTO to domain object
@@ -137,25 +137,25 @@ namespace NZWalks.API.Controllers
 
         private async Task<bool> ValidateAddWalkAsync(Models.DTO.AddWalkRequest addWalkRequest)
         {
-            if (addWalkRequest == null)
-            {
-                ModelState.AddModelError(nameof(addWalkRequest),
-                    $"{nameof(addWalkRequest)} cannot be empty");
+            //if (addWalkRequest == null)
+            //{
+            //    ModelState.AddModelError(nameof(addWalkRequest),
+            //        $"{nameof(addWalkRequest)} cannot be empty");
 
-                return false;
-            }
+            //    return false;
+            //}
 
-            if (string.IsNullOrWhiteSpace(addWalkRequest.Name))
-            {
-                ModelState.AddModelError(nameof(addWalkRequest.Name),
-                    $"{nameof(addWalkRequest.Name)} is required");
-            }
+            //if (string.IsNullOrWhiteSpace(addWalkRequest.Name))
+            //{
+            //    ModelState.AddModelError(nameof(addWalkRequest.Name),
+            //        $"{nameof(addWalkRequest.Name)} is required");
+            //}
 
-            if (addWalkRequest.Length <= 0)
-            {
-                ModelState.AddModelError(nameof(addWalkRequest.Length),
-                    $"{nameof(addWalkRequest.Length)} should be greater than zero");
-            }
+            //if (addWalkRequest.Length <= 0)
+            //{
+            //    ModelState.AddModelError(nameof(addWalkRequest.Length),
+            //        $"{nameof(addWalkRequest.Length)} should be greater than zero");
+            //}
 
             var region = await regionRepository.GetAsync(addWalkRequest.RegionId);
 
@@ -180,25 +180,25 @@ namespace NZWalks.API.Controllers
 
         private async Task<bool> ValidateUpdateWalkAsync(Models.DTO.UpdateWalkRequest updateWalkRequest)
         {
-            if (updateWalkRequest == null)
-            {
-                ModelState.AddModelError(nameof(updateWalkRequest),
-                    $"{nameof(updateWalkRequest)} cannot be empty");
+            //if (updateWalkRequest == null)
+            //{
+            //    ModelState.AddModelError(nameof(updateWalkRequest),
+            //        $"{nameof(updateWalkRequest)} cannot be empty");
 
-                return false;
-            }
+            //    return false;
+            //}
 
-            if (string.IsNullOrWhiteSpace(updateWalkRequest.Name))
-            {
-                ModelState.AddModelError(nameof(updateWalkRequest.Name),
-                    $"{nameof(updateWalkRequest.Name)} is required");
-            }
+            //if (string.IsNullOrWhiteSpace(updateWalkRequest.Name))
+            //{
+            //    ModelState.AddModelError(nameof(updateWalkRequest.Name),
+            //        $"{nameof(updateWalkRequest.Name)} is required");
+            //}
 
-            if (updateWalkRequest.Length <= 0)
-            {
-                ModelState.AddModelError(nameof(updateWalkRequest.Length),
-                    $"{nameof(updateWalkRequest.Length)} should be greater than zero");
-            }
+            //if (updateWalkRequest.Length <= 0)
+            //{
+            //    ModelState.AddModelError(nameof(updateWalkRequest.Length),
+            //        $"{nameof(updateWalkRequest.Length)} should be greater than zero");
+            //}
 
             var region = await regionRepository.GetAsync(updateWalkRequest.RegionId);
 
