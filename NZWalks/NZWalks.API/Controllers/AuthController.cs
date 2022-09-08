@@ -9,10 +9,12 @@ namespace NZWalks.API.Controllers
     public class AuthController : Controller
     {
         private readonly IUserRepository userRespository;
+        private readonly ITokenHandler tokenHandler;
 
-        public AuthController(IUserRepository userRespository)
+        public AuthController(IUserRepository userRespository, ITokenHandler tokenHandler)
         {
             this.userRespository = userRespository;
+            this.tokenHandler = tokenHandler;
         }
 
         [HttpPost]
@@ -24,11 +26,13 @@ namespace NZWalks.API.Controllers
             // Check if user is authenticated
 
             // Check username and password
-            var isAuthenticated = await userRespository.AuthenticateAsync(loginRequest.Username, loginRequest.Password);
+            var user = await userRespository.AuthenticateAsync(loginRequest.Username, loginRequest.Password);
 
-            if (isAuthenticated)
+            if (user != null)
             {
                 // Generate a JWT Token
+                var token = tokenHandler.CreateTokenAsync(user);
+                return Ok(token);
             }
 
             return BadRequest();
